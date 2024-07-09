@@ -1,0 +1,13 @@
+﻿@model List<SatisModel>
+
+@{
+    var toplam = 0;
+}
+
+@foreach (var satis in Model)
+{
+    <p>@satis.Name - @satis.Price</p>
+    toplam += satis.Price;
+}
+<hr/>
+<h5>Toplam: @toplam</h5>

@@ -1,0 +1,37 @@
+﻿@model List<Urun>
+
+@{
+	ViewData["Title"] = "Ürün Sil";
+}
+
+<div class="container">
+	<div class="row mb-2">
+		<div class="col-sm-6"><strong>Ürün Adı</strong></div>
+		<div class="col-sm-2"><strong>Fiyat</strong></div>
+		<div class="col-sm-2"><strong>Stok</strong></div>
+	</div>
+	@foreach (var urun in Model)
+	{
+		<form class="row g-3 mb-1" method="post" action="/Admin/Sil/@urun.Id" onsubmit="return confirm('Silmek istediğinize emin misiniz?');">
+			<div class="col-sm-6">
+				<input type="text" style="background-color:white" class="form-control" name="Name" value="@urun.Name" placeholder="Ürün Adı" readonly>
+			</div>
+			<div class="col-sm-2">
+				<input type="number" style="background-color:white" class="form-control" name="Price" value="@urun.Price" placeholder="Fiyat" readonly>
+			</div>
+			<div class="col-sm-2">
+				<input type="number" style="background-color:white" class="form-control" name="Stock" value="@urun.Stock" placeholder="Stok" readonly>
+			</div>
+			<div class="col-sm-2 align-self-end">
+				<button class="btn btn-primary" style="background-color:#ff4081; border-color:#ff4081">Sil</button>
+			</div>
+		</form>
+	}
+
+	@if (ViewData["Mesaj"] != null)
+	{
+		<div class="alert alert-primary" role="alert">
+			@ViewData["Mesaj"]
+		</div>
+	}
+</div>

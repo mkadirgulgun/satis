@@ -1,0 +1,15 @@
+﻿@model List<Urun>
+
+@{
+    ViewData["Title"] = "Anasayfa";
+}
+
+<form method="post" action="/home/satinal">
+    <ul>
+        @foreach (var urun in Model)
+        {
+            <p><input type="radio" required name="Id" value="@urun.Id"/> Ürün: @urun.Name - Fiyat: @urun.Price - Stok: @urun.Stock </p>
+        }
+    </ul>
+    <p><button>Satın Al</button></p>
+</form>

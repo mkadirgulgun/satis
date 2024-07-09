@@ -1,0 +1,33 @@
+﻿@model List<EklemeModel>
+
+@{
+	ViewData["Title"] = "Ürün Ekle";
+}
+
+<div class="container">
+	<div class="row mb-2">
+		<div class="col-sm-6"><strong>Ürün Adı</strong></div>
+		<div class="col-sm-2"><strong>Fiyat</strong></div>
+		<div class="col-sm-2"><strong>Stok</strong></div>
+	</div>
+	<form class="row g-3 mb-1" method="post" autocomplete="off" onsubmit="return confirm('Ürün eklemek istediğinize emin misiniz?');">
+		<div class="col-sm-6">
+			<input type="text" class="form-control" style="background-color: white" name="Name" required placeholder="Ürün Adı" />
+		</div>
+		<div class="col-sm-2">
+			<input type="text" class="form-control" style="background-color: white" name="Price" required placeholder="Fiyat" />
+		</div>
+		<div class="col-sm-2">
+			<input type="text" class="form-control" style="background-color: white" name="Stock" required placeholder="Stok" />
+		</div>
+		<div class="col-sm-2 align-self-end">
+			<button class="btn btn-primary" style="background-color:#ff4081; border-color:#ff4081">Ekle</button>
+		</div>
+
+		@if (ViewData["Mesaj"] != null)
+		{
+			<div class="alert alert-primary" role="alert">
+				@ViewData["Mesaj"]
+			</div>
+		}
+	</form>

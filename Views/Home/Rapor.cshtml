@@ -1,0 +1,23 @@
+﻿@model List<Satis>
+
+@{
+    ViewData["Title"] = "Satış Raporu";
+}
+
+<table class="table" style="width: 400px;">
+    <tr>
+        <th>Ürün Adı</th>
+        <th>Toplam Satış</th>
+        <th>Satış Adedi</th>
+    </tr>
+    @foreach (var satis in Model)
+    {
+        <tr>
+            <td>@satis.Name</td>
+            <td>@satis.TotalSale.ToString("N") TL</td>
+            <td>@satis.Quantity</td>
+        </tr>
+    }
+</table>
+
+<p style="font-weight: bold;">Toplam satış: @ViewBag.Sum.ToString("N") TL</p>

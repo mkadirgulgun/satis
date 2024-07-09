@@ -1,0 +1,38 @@
+﻿@model List<EklemeModel>
+
+@{
+	ViewData["Title"] = "Ürün Güncelle";
+}
+
+<div class="container">
+	<div class="row mb-2">
+		<div class="col-sm-6"><strong>Ürün Adı</strong></div>
+		<div class="col-sm-2"><strong>Fiyat</strong></div>
+		<div class="col-sm-2"><strong>Stok</strong></div>
+	</div>
+	@foreach (var urun in Model)
+	{
+	<!-- ürün form -->
+		<form class="row g-3 mb-1" method="post" action="/Admin/Guncelle/@urun.Id" autocomplete="off" onsubmit="return confirm('Güncellemek istediğinize emin misiniz?');">
+		<div class="col-sm-6">
+				<input type="text" class="form-control" name="Name" value="@urun.Name" placeholder="Ürün Adı">
+		</div>
+		<div class="col-sm-2">
+				<input type="number" class="form-control" name="Price" value="@urun.Price" placeholder="Fiyat">
+		</div>
+		<div class="col-sm-2">
+				<input type="number" class="form-control" name="Stock" value="@urun.Stock" placeholder="Stok">
+		</div>
+		<div class="col-sm-2 align-self-end">
+				<button class="btn btn-primary" style="background-color:#ff4081; border-color:#ff4081">Güncelle</button>
+		</div>
+	</form>
+	}
+
+	@if (ViewData["Mesaj"] != null)
+	{
+		<div class="alert alert-primary" role="alert">
+			@ViewData["Mesaj"]
+		</div>
+	}
+</div>
